@@ -15,6 +15,16 @@ public abstract class Animais {
    protected List<EsquemaVacinal> vacinas;
    protected String observacao;
 
+   public Animais(String nome, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, List<EsquemaVacinal> vacinas, String observacao) {
+      this.nome = nome;
+      this.raca = raca;
+      this.porte = porte;
+      this.peso = peso;
+      this.estadoanimal = estadoanimal;
+      this.vacinas = vacinas;
+      this.observacao = observacao;
+   }
+
    public String getNome() {
       return nome;
    }
@@ -67,8 +77,8 @@ public abstract class Animais {
       return vacinas;
    }
 
-   public void setVacinas(List<EsquemaVacinal> vacinas) {
-      this.vacinas = vacinas;
+   public void setVacinas(EsquemaVacinal vacinas) {
+      this.vacinas.add(vacinas);
    }
 
    public String getObservacao() {

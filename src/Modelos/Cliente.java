@@ -18,6 +18,11 @@ public class Cliente extends Pessoa{
         this.pets = pets;
     }
 
+    public Cliente(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public int getId() {
         return id;
     }
@@ -79,5 +84,13 @@ public class Cliente extends Pessoa{
             System.out.println(petsselecionados.get(indice).getNome());
         }
         petsatendimento = petsselecionados;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "nome='" + nome +
+                " id=" + id + '\'' +
+                '}';
     }
 }

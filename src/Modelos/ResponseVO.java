@@ -46,13 +46,16 @@ public class ResponseVO {
         this.cliente = cliente;
     }
 
+
+
+
     @Override
     public String toString() {
         return "ResponseVO{" +
                 " id=" + id +
                 ", servico=" + servico +
                 ", valor=" + valor +
-                ", cliente=" + cliente +
+                "," + cliente +
                 '}';
     }
 }
