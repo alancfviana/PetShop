@@ -31,6 +31,6 @@ public class Main {
 
         cliente1.selecionaPets();
         cliente1response = petshop.atendimentoClinico(cliente1, cliente1.petsatendimento, "Verificar as necessidades do cão 1");
-
+        System.out.println("Fim " + cliente1.getPets().get(0).getObservacao());
     }
 }

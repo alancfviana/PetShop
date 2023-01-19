@@ -5,10 +5,18 @@ import Modelos.Cliente;
 import Enum.Higiene;
 import Enum.Vacinas;
 import Enum.Servicos;
+import Util.Alimento;
+import Util.Remedio;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
+import static Menus.MenuVacina.*;
+import static Menus.MenuAlimento.*;
+import static Menus.MenuHigienizar.*;
+import static Menus.MenuRemedio.*;
+import static Menus.MenuAtendimento.*;
 import static Util.LerTeclado.*;
 
 public class PetShop {
@@ -21,18 +29,18 @@ public class PetShop {
 
     ResponseVO atendimentoClinico (Cliente cliente, List<Animais> animais, String observacao){
         ResponseVO responseVO = new ResponseVO();
-        responseVO.setId(1001);
         responseVO.setCliente(cliente);
+        responseVO.setId(1001);
         responseVO.setValor(BigDecimal.valueOf(50));
         responseVO.setServico(Servicos.ATENDIMENTO_CLINICO);
+        String observacaoin = observacao;
+        String observacaoout;
+        int numeroatendimento=0;
         int retorno;
+        int escolha;
         while(true) {
             while (true) {
-                System.out.println("Digite qual a necessidade do pet");
-                System.out.println("1 - Vacina");
-                System.out.println("2 - Remédio");
-                System.out.println("3 - Alimento");
-                System.out.println("0 - O pet está bem");
+                menuAtendimento();
                 retorno = lerTeclado();
                 if (retorno > 3) {
                     System.out.println("Necessidade inválida");
@@ -41,17 +49,67 @@ public class PetShop {
                 }
             }
             switch (retorno) {
-                case (1):
-                    System.out.println("Digite qual a vacina");
-                    System.out.println("1 - " + Vacinas.VACINA_1);
-                    System.out.println("2 - " + Vacinas.VACINA_2);
-                    System.out.println("3 - " + Vacinas.VACINA_3);
-                    System.out.println("4 - " + Vacinas.VACINA_4);
-                    System.out.println("5 - " + Vacinas.VACINA_5);
-                    System.out.println("0 - para retornar para opção anterior");
+                case (1): {
+                    while(true) {
+                        menuVacina();
+                        escolha = lerTeclado();
+                        if (escolha > Vacinas.values().length) {
+                            System.out.println("Vacina inválida tente novamente");
+                            continue;
+                        }
+                        break;
+                    }
+                    if(escolha == 0){
+                        continue;
+                    }
+                    observacaoout = escolhaVacina(escolha);
+                    System.out.println(observacaoout);
+                    animais.get(numeroatendimento).setObservacao(observacaoout);
+                    break;
+                }
+                case (2): {
+                    List<Remedio> lista = new ArrayList<Remedio>();
+                    while(true) {
+                        menuRemedio();
+                        escolha = lerTeclado();
+                        if (escolha > lista.size()) {
+                            System.out.println("Remédio inválido tente novamente");
+                            continue;
+                        }
+                        break;
+                    }
+                    if(escolha == 0){
+                        continue;
+                    }
+                    observacaoout = escolhaRemedio(escolha);
+                    System.out.println(observacaoout);
+                    animais.get(numeroatendimento).setObservacao(observacaoout);
+                    break;
+                }
+                case (3): {
+                    List<Alimento> lista = new ArrayList<Alimento>();
+                    while(true) {
+                        menuAlimento();
+                        escolha = lerTeclado();
+                        if (escolha > lista.size()) {
+                            System.out.println("Alimento inválido tente novamente");
+                            continue;
+                        }
+                        break;
+                    }
+                        if(escolha == 0){
+                            continue;
+                        }
+                        observacaoout = escolhaAlimento(escolha);
+                        System.out.println(observacaoout);
+                        animais.get(numeroatendimento).setObservacao(observacaoout);
+                        break;
+                    }
+
             }
-            return responseVO;
+           break;
         }
+        return responseVO;
     }
 
     ResponseVO vacinacao (Cliente cliente, List<Animais> animais, List<Vacinas> vacinas, String observacao){
