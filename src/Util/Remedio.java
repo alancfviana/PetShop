@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Remedio {
 
-    int id;
-    String nome;
-    BigDecimal valor;
+   protected int id;
+   protected String nome;
+   protected BigDecimal valor;
 
     public Remedio(int id, String nome, BigDecimal valor) {
         this.id = id;

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Alimento {
-    int id;
-    String nome;
-    BigDecimal valor;
+   private int id;
+   private String nome;
+   private BigDecimal valor;
 
     public Alimento(int id, String nome, BigDecimal valor) {
         this.id = id;

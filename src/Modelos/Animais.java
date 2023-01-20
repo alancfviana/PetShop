@@ -2,6 +2,8 @@ package Modelos;
 
 import Enum.Porte;
 import Enum.EstadoAnimal;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,16 +14,15 @@ public abstract class Animais {
    protected Porte porte;
    protected Double peso;
    protected EstadoAnimal estadoanimal;
-   protected List<EsquemaVacinal> vacinas;
+   protected List<EsquemaVacinal> vacinas = new ArrayList<EsquemaVacinal>();
    protected String observacao;
 
-   public Animais(String nome, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, List<EsquemaVacinal> vacinas, String observacao) {
+   public Animais(String nome, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, String observacao) {
       this.nome = nome;
       this.raca = raca;
       this.porte = porte;
       this.peso = peso;
       this.estadoanimal = estadoanimal;
-      this.vacinas = vacinas;
       this.observacao = observacao;
    }
 

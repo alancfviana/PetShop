@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Gato extends Animais{
 
-    public Gato(String nome, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, List<EsquemaVacinal> vacinas, String observacao) {
-        super(nome, raca, porte, peso, estadoanimal, vacinas, observacao);
+    public Gato(String nome, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, String observacao) {
+        super(nome, raca, porte, peso, estadoanimal, observacao);
     }
 }
