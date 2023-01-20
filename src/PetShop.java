@@ -4,6 +4,7 @@ import Enum.Vacinas;
 import Enum.Servicos;
 import Enum.EstadoAnimal;
 import Util.Alimento;
+import Util.Produtos;
 import Util.Remedio;
 
 import java.math.BigDecimal;
@@ -95,7 +96,7 @@ return responseVO;
                                 break;
                             }
                             case (2): {
-                                List<Remedio> lista = new ArrayList<Remedio>();
+                                List<Produtos> lista = new ArrayList<Produtos>();
                                 lista = listaRemedio();
                                 while (true) {
                                     menuRemedio();
@@ -115,7 +116,7 @@ return responseVO;
                                 break;
                             }
                             case (3): {
-                                List<Alimento> lista = new ArrayList<Alimento>();
+                                List<Produtos> lista = new ArrayList<Produtos>();
                                 lista = listaAlimento();
                                 while (true) {
                                     menuAlimento();
@@ -156,17 +157,17 @@ return responseVO;
     }
 
     void veralimentos(){
-        List<Alimento> listaalimento = new ArrayList<Alimento>();
+        List<Produtos> listaalimento = new ArrayList<Produtos>();
         listaalimento = listaAlimento();
-        for (Alimento alimentos:listaalimento) {
+        for (Produtos alimentos:listaalimento) {
             System.out.println(alimentos.toString());
         }
     }
 
     void verremedios(){
-        List<Remedio> listaremedio = new ArrayList<Remedio>();
+        List<Produtos> listaremedio = new ArrayList<Produtos>();
         listaremedio = listaRemedio();
-        for (Remedio remedio:listaremedio) {
+        for (Produtos remedio:listaremedio) {
             System.out.println(remedio.toString());
         }
     }

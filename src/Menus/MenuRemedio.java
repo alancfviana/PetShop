@@ -1,6 +1,7 @@
 package Menus;
 
 import Util.Alimento;
+import Util.Produtos;
 import Util.Remedio;
 import static Util.Remedio.*;
 
@@ -12,7 +13,7 @@ import static Util.Alimento.listaAlimento;
 public class MenuRemedio {
     public static void menuRemedio(){
 
-        List<Remedio> listaremedio = new ArrayList<Remedio>();
+        List<Produtos> listaremedio = new ArrayList<Produtos>();
         listaremedio = listaRemedio();
         System.out.println("Digite qual remédio desejado");
         System.out.println("1 - " + listaremedio.get(0).getNome());
@@ -23,7 +24,7 @@ public class MenuRemedio {
         System.out.println("0 - para retornar para opção anterior");
     }
     public static String escolhaRemedio(int escolha){
-        List<Remedio> listaremedio = new ArrayList<Remedio>();
+        List<Produtos> listaremedio = new ArrayList<Produtos>();
         listaremedio = listaRemedio();
         switch (escolha){
             case(1):{

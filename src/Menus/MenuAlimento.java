@@ -1,6 +1,7 @@
 package Menus;
 
 import Util.Alimento;
+import Util.Produtos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import static Util.Alimento.*;
 public class MenuAlimento {
 
     public static void menuAlimento(){
-        List<Alimento> listaalimento = new ArrayList<Alimento>();
+        List<Produtos> listaalimento = new ArrayList<Produtos>();
         listaalimento = listaAlimento();
         System.out.println("Digite qual o alimento desejado");
         System.out.println("1 - " + listaalimento.get(0).getNome());
@@ -21,7 +22,7 @@ public class MenuAlimento {
 
     }
     public static String escolhaAlimento(int escolha){
-        List<Alimento> listaalimento = new ArrayList<Alimento>();
+        List<Produtos> listaalimento = new ArrayList<Produtos>();
         listaalimento = listaAlimento();
         switch (escolha){
             case(1):{
