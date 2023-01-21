@@ -6,36 +6,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ResponseVO {
-   private List<Integer> id = new ArrayList<Integer>();
-   private List<Servicos> servico = new ArrayList<Servicos>();
-   private List<BigDecimal> valor = new ArrayList<BigDecimal>();
+   private int id;
+   private Servicos servico;
+   private BigDecimal valor;
    private Cliente cliente;
 
-    public List<Integer> getId() {
+    public int getId() {
 
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
 
-        this.id.add(id);
+        this.id = id;
     }
 
-    public List<Servicos> getServico() {
+    public Servicos getServico() {
         return servico;
     }
 
     public void setServico(Servicos servico) {
 
-        this.servico.add(servico);
+        this.servico = servico;
     }
 
-    public List<BigDecimal> getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
     public void setValor(BigDecimal valor) {
-        this.valor.add(valor);
+        this.valor = valor;
     }
 
     public Cliente getCliente() {

@@ -8,6 +8,7 @@ import Util.Produtos;
 import Util.Remedio;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import static Menus.MenuRemedio.*;
 import static Menus.MenuAtendimento.*;
 import static Util.Alimento.listaAlimento;
 import static Util.LerTeclado.*;
+import static Util.Produtos.criaProdutos;
 import static Util.Remedio.listaRemedio;
 
 public class PetShop {
@@ -54,10 +56,10 @@ return responseVO;
         ResponseVO responseVO = new ResponseVO();
         responseVO.setCliente(cliente);
         String observacaoin = observacao;
+        responseVO.setId(1001);
+        responseVO.setValor(BigDecimal.valueOf(50));
+        responseVO.setServico(Servicos.ATENDIMENTO_CLINICO);
         for (int numeroatendimento = 0; numeroatendimento < animais.size(); numeroatendimento++) {
-            responseVO.setId(1001);
-            responseVO.setValor(BigDecimal.valueOf(50));
-            responseVO.setServico(Servicos.ATENDIMENTO_CLINICO);
             String observacaoout;
             System.out.println(animais.get(numeroatendimento).getNome() + " está em atendimento");
             int retorno;
@@ -150,7 +152,7 @@ return responseVO;
             responseVO.setValor(BigDecimal.valueOf(80));
             responseVO.setServico(Servicos.VACINACAO);
             System.out.println("Pet em atendimento "+animais.get(numeroatendimento).getNome());
-            EsquemaVacinal vacina = new EsquemaVacinal(vacinas.get(numeroatendimento),"Vaciando");
+            EsquemaVacinal vacina = new EsquemaVacinal(vacinas.get(numeroatendimento), LocalDate.now(),"Vacinado");
             cliente.getPets().get(numeroatendimento).setVacinas(vacina);
         }
     return responseVO;
@@ -171,4 +173,62 @@ return responseVO;
             System.out.println(remedio.toString());
         }
     }
-}
+    ResponseVO comprar(Cliente cliente){
+        ResponseVO responseVO = new ResponseVO();
+        int escolha;
+        responseVO.setCliente(cliente);
+        List<Produtos> listacompra = new ArrayList<Produtos>();
+        List<Produtos> listaremedio = new ArrayList<Produtos>();
+        listaremedio = listaRemedio();
+        List<Produtos> listaalimento = new ArrayList<Produtos>();
+        listaalimento = listaAlimento();
+        for (int i = 0; i < listaremedio.size(); i++) {
+            listacompra.add(listaremedio.get(i));
+        }
+        for (int i = 0; i < listaalimento.size(); i++) {
+            listacompra.add(listaalimento.get(i));
+        }
+
+        while(true) {
+
+            while (true) {
+                System.out.println("Escolha o produto desejado");
+                for (int i = 0; i < listacompra.size(); i++) {
+                    System.out.println((i + 1) + " " + listacompra.get(i).getNome() + " " + listacompra.get(i).getValor());
+                }
+                System.out.println("0 para finalizar");
+                escolha = lerTeclado();
+                if (escolha > listacompra.size()) {
+                    System.out.println("Produto inválido tente novamente");
+                    continue;
+                }
+                break;
+            }
+            if (escolha == 0) {
+                System.out.println("Compra finalizada com sucesso");
+                System.out.println(responseVO.toString());
+                break;
+            }
+            escolha--;
+            responseVO.setId(listacompra.get(escolha).getId());
+            responseVO.setValor(listacompra.get(escolha).getValor());
+            System.out.println(listacompra.get(escolha).getNome() + " adicionado com sucesso");
+        } return responseVO;
+    }
+    void pagamento(List<Integer> itens){
+        BigDecimal total = BigDecimal.ZERO;
+        List<Produtos> listaprodutos = new ArrayList<Produtos>();
+        listaprodutos = criaProdutos();
+        System.out.println("Nota Fiscal");
+        for(int i = 0; i < itens.size(); i++){
+            for(int j = 0; j < listaprodutos.size(); j++) {
+            if(itens.get(i) == listaprodutos.get(j).getId()) {
+            total = listaprodutos.get(j).getValor().add(total);
+                System.out.println((i+1)+" "+listaprodutos.get(j).getNome() + " " + listaprodutos.get(j).getValor() + "R$");
+            }
+            }
+            }
+        System.out.println("O tatal é de " + total + "R$");
+        }
+    }
+

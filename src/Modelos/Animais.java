@@ -3,13 +3,14 @@ package Modelos;
 import Enum.Porte;
 import Enum.EstadoAnimal;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public abstract class Animais {
    protected String nome;
-   protected Date nascimento;
+   protected LocalDate nascimento;
    protected String raca;
    protected Porte porte;
    protected Double peso;
@@ -17,8 +18,9 @@ public abstract class Animais {
    protected List<EsquemaVacinal> vacinas = new ArrayList<EsquemaVacinal>();
    protected String observacao;
 
-   public Animais(String nome, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, String observacao) {
+   public Animais(String nome, LocalDate nascimento, String raca, Porte porte, Double peso, EstadoAnimal estadoanimal, String observacao) {
       this.nome = nome;
+      this.nascimento = nascimento;
       this.raca = raca;
       this.porte = porte;
       this.peso = peso;
@@ -34,11 +36,11 @@ public abstract class Animais {
       this.nome = nome;
    }
 
-   public Date getNascimento() {
+   public LocalDate getNascimento() {
       return nascimento;
    }
 
-   public void setNascimento(Date nascimento) {
+   public void setNascimento(LocalDate nascimento) {
       this.nascimento = nascimento;
    }
 

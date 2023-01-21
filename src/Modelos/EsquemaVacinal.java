@@ -3,15 +3,17 @@ package Modelos;
 
 import Enum.Vacinas;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class EsquemaVacinal {
-    Date data;
+    LocalDate data;
     Vacinas vacina;
     String Observação;
 
-    public EsquemaVacinal(Vacinas vacina, String observação) {
+    public EsquemaVacinal(Vacinas vacina, LocalDate data,String observação) {
         this.vacina = vacina;
+        this.data = data;
         Observação = observação;
     }
 
@@ -19,6 +21,7 @@ public class EsquemaVacinal {
     public String toString() {
         return "EsquemaVacinal{" +
                 "vacina=" + vacina +
+                ",data=" + data +
                 ", Observação='" + Observação + '\'' +
                 '}';
     }
