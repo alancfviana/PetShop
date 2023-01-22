@@ -69,11 +69,11 @@ public class Produtos {
 
     public static List<Produtos> listaServicos() {
         Produtos servico1 = new Produtos(1001,"Atendimento Clinico",BigDecimal.valueOf(50));
-        Produtos servico2 = new Produtos(1101,"Vacinação Vacina 1",BigDecimal.valueOf(80));
-        Produtos servico3 = new Produtos(1102,"Vacinação Vacina 2",BigDecimal.valueOf(80));
-        Produtos servico4 = new Produtos(1103,"Vacinação Vacina 3",BigDecimal.valueOf(80));
-        Produtos servico5 = new Produtos(1104,"Vacinação Vacina 4",BigDecimal.valueOf(80));
-        Produtos servico6 = new Produtos(1105,"Vacinação Vacina 5",BigDecimal.valueOf(80));
+        Produtos servico2 = new Produtos(1101,"Vacinação",BigDecimal.valueOf(80));
+        Produtos servico3 = new Produtos(1102,"Vacinação",BigDecimal.valueOf(80));
+        Produtos servico4 = new Produtos(1103,"Vacinação",BigDecimal.valueOf(80));
+        Produtos servico5 = new Produtos(1104,"Vacinação",BigDecimal.valueOf(80));
+        Produtos servico6 = new Produtos(1105,"Vacinação",BigDecimal.valueOf(80));
         Produtos servico7 = new Produtos(1201,"Banho",BigDecimal.valueOf(40));
         Produtos servico8 = new Produtos(1202,"Tosa",BigDecimal.valueOf(30));
         Produtos servico9 = new Produtos(1203,"Banho e Tosa",BigDecimal.valueOf(60));

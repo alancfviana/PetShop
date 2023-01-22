@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static Util.LerTeclado.pausa;
 import static Util.Produtos.*;
 
 
@@ -20,7 +22,7 @@ public class Main {
         System.out.println("Cliente 1");
         List<Integer> itens1 = new ArrayList<Integer>();
         List<Integer> itens2 = new ArrayList<Integer>();
-        PetShop petshop = new PetShop();
+        PetShop petshop = new PetShop("35258699/0001-01");
         Cliente cliente1 = new Cliente(1001,"Roberto");
         Cliente cliente2 = new Cliente(1002, "Maria");
 
@@ -36,9 +38,9 @@ public class Main {
         cliente2.addPets(cachorro2);
         cliente2.addPets(gato1);
 
-        cliente1.selecionaPets();
-        cliente1response = petshop.atendimentoClinico(cliente1, cliente1.petsatendimento, "Verificar as necessidades do cão 1");
-        for (int i = 0; i < cliente1.petsatendimento.size(); i++) {
+
+        cliente1response = petshop.atendimentoClinico(cliente1, cliente1.getPets(), "Verificar as necessidades do cão 1");
+        for (int i = 0; i < cliente1.getPets().size(); i++) {
             itens1.add(cliente1response.getId());
         }
         System.out.println(cliente1response.toString());
@@ -48,15 +50,15 @@ public class Main {
             String vacina = cliente1.getPets().get(petnumero).getObservacao();
             vacinascliente1.add(converteVacina(vacina));
         }
-        cliente1response = petshop.vacinacao(cliente1, cliente1.petsatendimento,vacinascliente1,"Tomar vacina");
-        for (int i = 0; i < cliente1.petsatendimento.size(); i++) {
+        cliente1response = petshop.vacinacao(cliente1, cliente1.getPets(),vacinascliente1,"Tomar vacina");
+        for (int i = 0; i < cliente1.getPets().size(); i++) {
             itens1.add(cliente1response.getId());
         }
         System.out.println(cliente1.getPets().get(0).getNome() + " " + cliente1.getPets().get(0).getVacinas().toString());
         System.out.println(cliente1response.toString());
 
-        cliente1response = petshop.higienizar(cliente1, cliente1.petsatendimento, Higiene.BANHO_E_TOSA, "Cuidado com as orelhas");
-        for (int i = 0; i < cliente1.petsatendimento.size(); i++) {
+        cliente1response = petshop.higienizar(cliente1, cliente1.getPets(), Higiene.BANHO_E_TOSA, "Cuidado com as orelhas");
+        for (int i = 0; i < cliente1.getPets().size(); i++) {
             itens1.add(cliente1response.getId());
         }
         System.out.println(cliente1.getPets().get(0).getNome() + " está " + cliente1.getPets().get(0).getEstadoanimal());
@@ -65,7 +67,7 @@ public class Main {
         petshop.veralimentos();
         petshop.verremedios();
 
-
+        pausa();
         itens1.add(2001);
 
         itens1.add(3004);
@@ -74,10 +76,11 @@ public class Main {
         petshop.pagamento(itens1);
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        pausa();
         System.out.println("\n%%%%%%%%%%%%%%%%%%%%%%%%\n\nCliente2");
-        cliente2.selecionaPets();
-        cliente2response = petshop.atendimentoClinico(cliente2,cliente2.petsatendimento, "Um gato e um cachorro");
-        for (int i = 0; i < cliente2.petsatendimento.size(); i++) {
+
+        cliente2response = petshop.atendimentoClinico(cliente2,cliente2.getPets(), "Um gato e um cachorro");
+        for (int i = 0; i < cliente2.getPets().size(); i++) {
             itens2.add(cliente2response.getId());
         }
 
@@ -88,8 +91,8 @@ public class Main {
             String vacina = cliente2.getPets().get(petnumero).getObservacao();
             vacinascliente2.add(converteVacina(vacina));
         }
-        cliente2response = petshop.vacinacao(cliente2, cliente2.petsatendimento,vacinascliente2,"Tomar vacina");
-        for (int i = 0; i < cliente2.petsatendimento.size(); i++) {
+        cliente2response = petshop.vacinacao(cliente2, cliente2.getPets(),vacinascliente2,"Tomar vacina");
+        for (int i = 0; i < cliente2.getPets().size(); i++) {
             itens2.add(cliente2response.getId());
         }
 
@@ -97,8 +100,8 @@ public class Main {
         System.out.println(cliente2.getPets().get(1).getNome() + " " + cliente2.getPets().get(1).getVacinas().toString());
         System.out.println(cliente2response.toString());
 
-        cliente2response = petshop.higienizar(cliente2, cliente2.petsatendimento, Higiene.BANHO, "Cuidado com as orelhas");
-        for (int i = 0; i < cliente2.petsatendimento.size(); i++) {
+        cliente2response = petshop.higienizar(cliente2, cliente2.getPets(), Higiene.BANHO, "Cuidado com as orelhas");
+        for (int i = 0; i < cliente2.getPets().size(); i++) {
             itens2.add(cliente2response.getId());
         }
         System.out.println(cliente2.getPets().get(0).getNome() + " está " + cliente2.getPets().get(0).getEstadoanimal());
@@ -113,6 +116,7 @@ public class Main {
         itens2.add(3002);
         itens2.add(3005);
 
+        pausa();
 
         System.out.println(cliente2response.toString());
         petshop.pagamento(itens2);

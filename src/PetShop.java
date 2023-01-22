@@ -26,6 +26,11 @@ public class PetShop {
     String cnpj;
     Endereco endereco;
 
+    public PetShop(String cnpj) {
+        this.cnpj = cnpj;
+
+    }
+
     ResponseVO higienizar (Cliente cliente, List<Animais> animais, Higiene higiene, String observacao) {
 
         ResponseVO responseVO = new ResponseVO();
